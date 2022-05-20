@@ -1,4 +1,0 @@
-°Colores:
-
--color 1 #f42f25
--color 2 #00b45a

@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="css/bootstrap.min.css">
 
 <!--  Archivo .ico de la plataforma  -->
-<link rel="shortcut icon" href="images/logoC.png" type="image/x-icon">
+<link rel="shortcut icon" href="images/image.ico" type="image/x-icon">
 
 <!-- Sweet Alert 2 -->
 <link rel="stylesheet" href="extensions/sweetalert2/sweetalert2.min.css">

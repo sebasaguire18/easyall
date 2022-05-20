@@ -21,8 +21,7 @@
         <div class="container vh-100">
             <div class="row justify-content-center align-items-center h-100">
                 <div class="col-12 d-flex justify-content-center align-items-center h-100">
-                    <p class="display-1">Bienvenido a <b>CHOTEI</b></p>
-                <img src="images/loading.gif" width="50%">
+                    <p class="display-1">Bienvenido a <b>EasyAll</b></p>
                 </div>
             </div>
         </div>
