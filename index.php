@@ -11,7 +11,7 @@
 <!doctype html>
 <html lang="es">
   <head>
-  	<title>Login</title>
+  	<title>Inicio</title>
 
     <?php include 'includes/link.php'; ?>
 
