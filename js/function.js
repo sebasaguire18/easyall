@@ -53,6 +53,54 @@ function tablas(tabla) {
     }
 }
 
+// Función para iniciar sesión
+function iniciarSesion(usernameLoging,passLoging) {
+
+    $('#btnIniciarSesion').text('Validando datos...');
+    $('#usernameLoging','#passLoging').removeClass('bd-danger');
+    $('#spanUsernameLogingError').addClass('dp-none');
+    $('#spanPassLogingError').addClass('dp-none');
+
+    $.ajax({
+        type: "POST",
+        url: "php/iniciosesion.php",
+        data: "usernameLoging=" + usernameLoging + "&passLoging=" + passLoging,
+        success: function(r) {
+            setTimeout(function(){
+                if (r == 'errorPassword') {
+                    $('#passLoging').addClass('bd-danger');
+                    $('#spanPassLogingError').removeClass('dp-none');
+                    $('#btnIniciarSesion').text('Validar');
+                }
+                if(r == 'errorUsername'){
+                    $('#usernameLoging').addClass('bd-danger');
+                    $('#spanUsernameLogingError').removeClass('dp-none');
+                    $('#btnIniciarSesion').text('Validar');
+                }
+
+                if (r == 'successSesion') {
+                    window.location.href = 'welcome.php';
+                }
+            }, 500);
+        }
+    });
+}
+
+// función que cambia de formularios para iniciar sesion, registrarse o recuperar contraseña
+function changeForm(form) {
+    if (form == 'regis') {
+        $('#box-sesion').addClass('dp-none');
+        $('#box-regis').removeClass('dp-none');
+    }else if (form == 'ini'){
+        $('#box-regis').addClass('dp-none');
+        $('#box-sesion').removeClass('dp-none');
+    }
+    // else if (form == 'olv'){
+    //     $('#').addClass('d-');
+    //     $('#').removeClass('d-');
+    // }
+}
+
 // función que inserta un nuevo registro
 function insertarNuevoRegistro(reload) {
 
@@ -1238,17 +1286,17 @@ $(function(){
     
     
     
-    var chartProfileVisit = new ApexCharts(document.querySelector("#chart-profile-visit"), optionsProfileVisit);
-    var chartVisitorsProfile = new ApexCharts(document.getElementById('chart-visitors-profile'), optionsVisitorsProfile)
-    var chartEurope = new ApexCharts(document.querySelector("#chart-europe"), optionsEurope);
-    var chartAmerica = new ApexCharts(document.querySelector("#chart-america"), optionsAmerica);
-    var chartIndonesia = new ApexCharts(document.querySelector("#chart-indonesia"), optionsIndonesia);
+    // var chartProfileVisit = new ApexCharts(document.querySelector("#chart-profile-visit"), optionsProfileVisit);
+    // var chartVisitorsProfile = new ApexCharts(document.getElementById('chart-visitors-profile'), optionsVisitorsProfile)
+    // var chartEurope = new ApexCharts(document.querySelector("#chart-europe"), optionsEurope);
+    // var chartAmerica = new ApexCharts(document.querySelector("#chart-america"), optionsAmerica);
+    // var chartIndonesia = new ApexCharts(document.querySelector("#chart-indonesia"), optionsIndonesia);
     
-    chartIndonesia.render();
-    chartAmerica.render();
-    chartEurope.render();
-    chartProfileVisit.render();
-    chartVisitorsProfile.render()
+    // chartIndonesia.render();
+    // chartAmerica.render();
+    // chartEurope.render();
+    // chartProfileVisit.render();
+    // chartVisitorsProfile.render();
 });
 
 // select multiple
@@ -1714,33 +1762,33 @@ function iniciarPC() {
 
                 console.log(precioGanadasValue + 'precioGanadasValue');
 
-                chartPlanCuentas(1,precioPerdidasalue,precioAbiertasalue,precioGanadasValue);
+                // chartPlanCuentas(1,precioPerdidasalue,precioAbiertasalue,precioGanadasValue);
 
-                $.ajax({
-                    type: "POST",
-                    url: "pages/selectPlanCuentas.php",
-                    data: "tipo=OportXOrg" + "&org=" + organizacion,
-                    success: function(res) {
+                // $.ajax({
+                //     type: "POST",
+                //     url: "pages/selectPlanCuentas.php",
+                //     data: "tipo=OportXOrg" + "&org=" + organizacion,
+                //     success: function(res) {
                         
-                        $('#SetOprtXOrg').html(res);
+                //         $('#SetOprtXOrg').html(res);
 
-                        let choices = document.querySelectorAll('#choice1OprtXOrg');
-                        let initChoice;
-                        for(let i=0; i<choices.length;i++) {
-                            if (choices[i].classList.contains("multiple-remove")) {
-                                initChoice = new Choices(choices[i],
-                                {
-                                    delimiter: ',',
-                                    editItems: true,
-                                    maxItemCount: -1,
-                                    removeItemButton: true,
-                                });
-                            }else{
-                                initChoice = new Choices(choices[i]);
-                            }
-                        }
-                    }
-                });
+                //         let choices = document.querySelectorAll('#choice1OprtXOrg');
+                //         let initChoice;
+                //         for(let i=0; i<choices.length;i++) {
+                //             if (choices[i].classList.contains("multiple-remove")) {
+                //                 initChoice = new Choices(choices[i],
+                //                 {
+                //                     delimiter: ',',
+                //                     editItems: true,
+                //                     maxItemCount: -1,
+                //                     removeItemButton: true,
+                //                 });
+                //             }else{
+                //                 initChoice = new Choices(choices[i]);
+                //             }
+                //         }
+                //     }
+                // });
 
             }
         });
@@ -1781,38 +1829,38 @@ function regresarOXO() {
     $('#SetOprtXOrg').removeClass('d-none');
 }
 
-function chartPlanCuentas(numChart,perdidos,abiertos,ganados){
+// function chartPlanCuentas(numChart,perdidos,abiertos,ganados){
 
-    if (numChart == 1) {
-        var optionsProfileVisit = {
-            annotations: {
-                position: 'back'
-            },
-            dataLabels: {
-                enabled:false
-            },
-            chart: {
-                type: 'bar',
-                height: 300
-            },
-            fill: {
-                opacity:1
-            },
-            plotOptions: {
-            },
-            series: [{
-                name: 'sales',
-                data: [perdidos,abiertos,ganados]
-            }],
-            colors: '#33048E',
-            xaxis: {
-                categories: ["Perdidas","Abiertas","Ganados"],
-            },
-        }
-        var chartProfileVisit = new ApexCharts(document.querySelector("#grafica1PC"), optionsProfileVisit);
-        chartProfileVisit.render();
-    }
-}
+//     if (numChart == 1) {
+//         var optionsProfileVisit = {
+//             annotations: {
+//                 position: 'back'
+//             },
+//             dataLabels: {
+//                 enabled:false
+//             },
+//             chart: {
+//                 type: 'bar',
+//                 height: 300
+//             },
+//             fill: {
+//                 opacity:1
+//             },
+//             plotOptions: {
+//             },
+//             series: [{
+//                 name: 'sales',
+//                 data: [perdidos,abiertos,ganados]
+//             }],
+//             colors: '#33048E',
+//             xaxis: {
+//                 categories: ["Perdidas","Abiertas","Ganados"],
+//             },
+//         }
+//         var chartProfileVisit = new ApexCharts(document.querySelector("#grafica1PC"), optionsProfileVisit);
+//         chartProfileVisit.render();
+//     }
+// }
 
 function cerrarModal(id) {
     document.getElementById(id).click();

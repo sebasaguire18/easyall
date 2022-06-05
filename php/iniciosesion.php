@@ -2,61 +2,51 @@
 
 include 'conexion-bd.php';
 
-if(isset($_POST['btn_iniciar'])){
+$usernameLoging = $_POST['usernameLoging'];
+$passLoging = $_POST['passLoging'];
 
 
-    $username = $_POST['username'];
-    $pass = $_POST['pass'];
+$consultaU = " SELECT * FROM usuarios WHERE username = '$usernameLoging' AND status = 1 ";
 
-    if (isset($_POST['url'])) {
-        $url = $_POST['url'];
-    }
+$resultado=mysqli_query($conexion,$consultaU);
+$filas=mysqli_num_rows($resultado);
 
-    $consultaU = " SELECT * FROM tablaUsuario WHERE username = '$username' AND status = 1 ";
-
-    $resultado=mysqli_query($conexion,$consultaU);
-    $filas=mysqli_num_rows($resultado);
+if($filas==1){
+    $passLoging = md5($passLoging);
+    $consulta = " SELECT * FROM usuarios WHERE username = '$usernameLoging' AND pass = '$passLoging' AND status = 1 ";
     
-    if($filas==1){
-        $pass = md5($pass);
-        $consulta = " SELECT * FROM tablaUsuario WHERE username = '$username' AND pass = '$pass' AND status = 1 ";
-        
-        $resultado=mysqli_query($conexion,$consulta);
-        $fila=mysqli_num_rows($resultado);
-        
-        if($fila==1){
-        
-            session_start();
+    $resultado=mysqli_query($conexion,$consulta);
+    $fila=mysqli_num_rows($resultado);
+    
+    if($fila==1){
+    
+        session_start();
 
-            $nombre="SELECT * FROM tablaUsuario WHERE username = '$username'";
-            
-            $ejecutar_nombre=mysqli_query($conexion, $nombre);
-            $mostrar_nombre=mysqli_fetch_array($ejecutar_nombre);
-            $_SESSION['email']=$mostrar_nombre['username'];
-            mysqli_free_result($resultado); 
-            mysqli_close($conexion);
-            
-            if ($url<>"") {
-                header('location:'.$url.'');
-            }else {   
-                header('location: ../welcome.php');
-            }
-        }else{
-
-            mysqli_free_result($resultado); 
-            mysqli_close($conexion);     
-            
-            return 'errorPassword';
-            
-        }   
+        $nombre="SELECT * FROM usuarios WHERE username = '$usernameLoging'";
         
+        $ejecutar_nombre=mysqli_query($conexion, $nombre);
+        $mostrar_nombre=mysqli_fetch_array($ejecutar_nombre);
+        $_SESSION['id_user']=$mostrar_nombre['id'];
+        mysqli_free_result($resultado); 
+        mysqli_close($conexion);
+          
+        echo 'successSesion';
     }else{
-        
+
         mysqli_free_result($resultado); 
         mysqli_close($conexion);     
         
-        return 'errorUsername';
+        echo 'errorPassword';
+        
     }   
-} 
+    
+}else{
+    
+    mysqli_free_result($resultado); 
+    mysqli_close($conexion);     
+    
+    echo 'errorUsername';
+}   
+
 
 ?>

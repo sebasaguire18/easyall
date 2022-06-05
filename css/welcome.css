@@ -345,6 +345,98 @@ mark,
 
 
 
+
+.bd-blue{
+    border: 1px solid var(--blue)!important;
+}
+
+.bd-indigo{
+    border: 1px solid var(--indigo)!important;
+}
+
+.bd-purple{
+    border: 1px solid var(--purple)!important;
+}
+
+.bd-pink{
+    border: 1px solid var(--pink)!important;
+}
+
+.bd-red{
+    border: 1px solid var(--red)!important;
+}
+.bd-orange{
+    border: 1px solid var(--orange)!important;
+}
+
+.bd-yellow{
+    border: 1px solid var(--yellow)!important;
+}
+
+.bd-green{
+    border: 1px solid var(--green)!important;
+}
+
+.bd-teal{
+    border: 1px solid var(--teal)!important;
+}
+
+.bd-cyan{
+    border: 1px solid var(--cyan)!important;
+}
+
+.bd-white{
+    border: 1px solid var(--white)!important;
+}
+
+.bd-black{
+    border: 1px solid black!important;
+}
+
+.bd-gray{
+    border: 1px solid var(--gray)!important;
+}
+
+.bd-gray{
+    border: 1px solid var(--gray)!important;
+}
+
+.bd-primary{
+    border: 1px solid var(--primary)!important;
+}
+
+.bd-secondary{
+    border: 1px solid var(--secondary)!important;
+}
+.bd-success{
+    border: 1px solid var(--success)!important;
+}
+
+.bd-info{
+    border: 1px solid var(--info)!important;
+}
+
+.bd-warning{
+    border: 1px solid var(--warning)!important;
+}
+
+.bd-danger{
+    border: 1px solid var(--danger)!important;
+}
+
+.bd-light{
+    border: 1px solid var(--light)!important;
+}
+
+.bd-dark{
+    border: 1px solid var(--dark)!important;
+}
+
+.bd-gold{
+    border: 1px solid #f8a23a!important;
+}
+
+
 /* -------------------------1------------------------- */
 .content {
     width: 100%;
