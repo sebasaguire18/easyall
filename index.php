@@ -21,7 +21,7 @@
     <body>
         <div class="rwg hvh-100 w-100">
             <div class="g-reg-7 g-reg-xl-7 g-reg-lg-7 g-reg-md-5 hvh-100 bg-red dp-flex jfy-ctn-center alg-itm-center" id="span-logo">
-                <h0>Bienvenido a <b>EasyAll</b></h0>
+                <h0><span>Bienvenido a</span> EasyAll</h0>
             </div>
             <div class="g-reg-14 g-reg-xl-7 g-reg-lg-7 g-reg-md-9 g-reg-sm-14 hvh-100 bg-white dp-flex jfy-ctn-center alg-itm-center">
                 <div class="bg-trs-3 w-60 bdr-4" id="box-sesion">
