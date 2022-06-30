@@ -807,6 +807,77 @@ mark,
     }
 }
 
+
+
+.following {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.82rem 1.2rem;
+    margin-bottom: 1.2rem;
+    margin-top: 0.65rem;
+    list-style: none;
+    border-radius: 0.27rem;
+    background-color: rgba(255, 255, 255, 0.1)!important;
+    width: 100%;
+    color: var(--white);
+}
+
+.following-dk {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.82rem 1.2rem;
+    margin-bottom: 1.2rem;
+    margin-top: 0.65rem;
+    list-style: none;
+    border-radius: 0.27rem;
+    background-color: rgba(255, 255, 255, 0.5)!important;
+    width: 100%;
+    color: black;
+}
+
+.following-item+.following-item::before {
+    display: inline-block;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+    content: "/";
+}
+
+.following-item:hover {
+    cursor: pointer;
+    color: var(--blue);
+}
+
+.following-item.actual {
+    color: var(--secondary);
+}
+
+.following-item.actual:hover {
+    cursor: default;
+}
+
+
+.following-item-dk+.following-item-dk::before {
+    display: inline-block;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+    content: "/";
+}
+
+.following-item-dk:hover {
+    cursor: pointer;
+    color: var(--dark);
+}
+
+.following-item-dk.actual {
+    color: var(--light);
+}
+
+.following-item-dk.actual:hover {
+    cursor: default;
+}
+
+
+
 /* -------------------- margin and padding -------------------- */
 .mg-auto {
     margin: auto;
